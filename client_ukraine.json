@@ -1,0 +1,33 @@
+{
+  "inbounds": [{
+    "port": 1080,  // Port of socks5 proxy. Point your browser to use this port.
+    "listen": "192.168.1.131", // Edit with your computer's IP address
+    "protocol": "socks",
+    "settings": {
+      "udp": true
+    }
+  }],
+  "outbounds": [{
+    "protocol": "vmess",
+    "settings": {
+      "vnext": [{
+        "address": "45.153.229.92", // Address of your V2Ray server. May be IP or domain address.
+        "port": 443,  // Port of your V2Ray server.
+        "users": [{ "id": "b831381d-6324-4d53-ad4f-8cda48b30811" }]
+      }]
+    }
+  },{
+    "protocol": "freedom",
+    "tag": "direct",
+    "settings": {}
+  }],
+  "routing": {
+    "domainStrategy": "IPOnDemand",
+    "rules": [{
+      "type": "field",
+      "ip": ["geoip:private"],
+      "outboundTag": "direct"
+    }]
+  }
+}
+
